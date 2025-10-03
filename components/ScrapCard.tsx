@@ -1,2 +1,2 @@
 import { ReactNode } from 'react'
-export default function ScrapCard({children,className=''}:{children:ReactNode;className?:string}){return(<div className={`relative scrap-container ${className}`}><span className='tape'/><span className='tape right'/><div className='paper torn'>{children}</div></div>)}
+export default function ScrapCard({children,className=''}:{children:ReactNode;className?:string}){return(<div className={`relative scrap-container ${className}`}><span className='tape'/><span className='tape right'/><div className="paper torn flex flex-col items-center text-center gap-4">{children}</div></div>)}
