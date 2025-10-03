@@ -456,6 +456,8 @@ video {
   margin-right: auto;
 }.mb-2{
   margin-bottom: 0.5rem;
+}.mb-3{
+  margin-bottom: 0.75rem;
 }.mb-4{
   margin-bottom: 1rem;
 }.ml-2{
@@ -498,6 +500,8 @@ video {
   flex-direction: column;
 }.flex-wrap{
   flex-wrap: wrap;
+}.items-start{
+  align-items: flex-start;
 }.items-center{
   align-items: center;
 }.justify-between{
@@ -510,6 +514,10 @@ video {
   gap: 1.5rem;
 }.gap-8{
   gap: 2rem;
+}.space-y-10 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
 }.space-y-14 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
   margin-top: calc(3.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -544,6 +552,9 @@ video {
   border-width: 1px;
 }.border-sky-200\/70{
   border-color: rgb(186 230 253 / 0.7);
+}.bg-white{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }.bg-white\/70{
   background-color: rgb(255 255 255 / 0.7);
 }.object-cover{
@@ -569,6 +580,8 @@ video {
 }.py-3{
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}.pl-5{
+  padding-left: 1.25rem;
 }.pl-6{
   padding-left: 1.5rem;
 }.pt-6{
@@ -605,6 +618,10 @@ video {
   line-height: 1.25;
 }.tracking-tight{
   letter-spacing: -0.025em;
+}.text-ink\/60{
+  color: rgb(64 56 74 / 0.6);
+}.text-ink\/70{
+  color: rgb(64 56 74 / 0.7);
 }.text-ink\/80{
   color: rgb(64 56 74 / 0.8);
 }.text-sky-700{
@@ -612,6 +629,10 @@ video {
   color: rgb(3 105 161 / var(--tw-text-opacity, 1));
 }.underline{
   text-decoration-line: underline;
+}.shadow-md{
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 :root {
@@ -736,7 +757,26 @@ transform:scale(0);transition:transform .35s ease;border-radius:50%;z-index:-1}
 /* Gallery frames */
 .scrapbook-frame{border:2px solid #BEE3FF;box-shadow:3px 5px 0 #93c2f5,inset 0 0 0 1px #e0f3ff;border-radius:14px;background:#ffffffd9}
 .washi-strip{position:absolute;top:0;width:70px;height:24px;background:linear-gradient(135deg,#BEE3FF 0%,#CFF5D2 100%);opacity:.85;z-index:20;border-radius:4px}
-.washi-strip.left{left:10px;transform:rotate(-8deg)} .washi-strip.right{right:10px;transform:rotate(6deg)} @media (min-width: 640px){
+.washi-strip.left{left:10px;transform:rotate(-8deg)} .washi-strip.right{right:10px;transform:rotate(6deg)}
+
+.instagram-media {
+  min-height: 400px;
+}
+
+/* Nightdream palette (soft lavender, midnight ink) */
+:root[data-theme="night"] {
+  --ink: #2b2333;
+  --bg1: #EDE7FF;  /* lavender */
+  --bg2: #E7D6FF;  /* lilac pink */
+  --bg3: #EADDFB;  /* soft mauve */
+  --accent: #CFF5D2; /* keep mint highlight */
+}
+
+/* Optional: dim cards slightly at night */
+:root[data-theme="night"] .paper {
+  background: #ffffffcc;
+}
+@media (min-width: 640px){
   .sm\:h-\[420px\]{
     height: 420px;
   }
@@ -761,7 +801,8 @@ transform:scale(0);transition:transform .35s ease;border-radius:50%;z-index:-1}
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
-} @media (min-width: 768px){
+}
+@media (min-width: 768px){
   .md\:flex{
     display: flex;
   }
@@ -771,9 +812,15 @@ transform:scale(0);transition:transform .35s ease;border-radius:50%;z-index:-1}
   .md\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-} @media (min-width: 1024px){
+}
+@media (min-width: 1024px){
   .lg\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .lg\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
+
+
 

@@ -125,3 +125,23 @@ transform:scale(0);transition:transform .35s ease;border-radius:50%;z-index:-1}
 .scrapbook-frame{border:2px solid #BEE3FF;box-shadow:3px 5px 0 #93c2f5,inset 0 0 0 1px #e0f3ff;border-radius:14px;background:#ffffffd9}
 .washi-strip{position:absolute;top:0;width:70px;height:24px;background:linear-gradient(135deg,#BEE3FF 0%,#CFF5D2 100%);opacity:.85;z-index:20;border-radius:4px}
 .washi-strip.left{left:10px;transform:rotate(-8deg)} .washi-strip.right{right:10px;transform:rotate(6deg)}
+
+.instagram-media {
+  min-height: 400px;
+}
+
+/* Nightdream palette (soft lavender, midnight ink) */
+:root[data-theme="night"] {
+  --ink: #2b2333;
+  --bg1: #EDE7FF;  /* lavender */
+  --bg2: #E7D6FF;  /* lilac pink */
+  --bg3: #EADDFB;  /* soft mauve */
+  --accent: #CFF5D2; /* keep mint highlight */
+}
+
+/* Optional: dim cards slightly at night */
+:root[data-theme="night"] .paper {
+  background: #ffffffcc;
+}
+
+

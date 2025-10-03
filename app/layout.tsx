@@ -2,10 +2,12 @@
 import './globals.css'
 import Link from 'next/link'
 import GlitterCursor from '@/components/GlitterCursor'
+import ThemeToggle from '@/components/ThemeToggle'
+
 
 export const metadata = {
   title: 'Maddie in Montevideo — maddieinmvd',
-  description: 'Australian creator living in Uruguay. Consultations, translator services, lifestyle content.',
+  description: 'Australian creator living in Uruguay. Lifestyle and fashion content.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -21,9 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </Link>
               <div className="hidden md:flex items-center gap-2">
                 <Link className="sticker" href="/about">About</Link>
-                <Link className="sticker" href="/services">Translator</Link>
-                <Link className="sticker" href="/consult">Consult</Link>
+                <Link className="sticker" href="/services">Services</Link>
                 <Link className="sticker" href="/contact">Contact</Link>
+                <ThemeToggle />
               </div>
             </div>
           </nav>
@@ -41,12 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <footer className="mt-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 text-sm flex flex-col sm:flex-row gap-6 sm:items-center sm:justify-between">
-            <p>© {new Date().getFullYear()} Maddie in Montevideo — scrapbook edition.</p>
-            <div className="flex gap-3">
-              <a className="sticker" href="https://www.instagram.com/maddieinmvd" target="_blank">Instagram</a>
-              <a className="sticker" href="https://www.tiktok.com/@maddieinmvd" target="_blank">TikTok</a>
-              <a className="sticker" href="https://www.youtube.com/@MaddieinMontevideo" target="_blank">YouTube</a>
-            </div>
+            <p>© {new Date().getFullYear()} Maddie in Montevideo</p>
           </div>
         </footer>
       </body>

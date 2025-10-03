@@ -4,6 +4,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import ScrapCard from '@/components/ScrapCard'
 import ScrapbookGallery from '@/components/ScrapbookGallery'
+import IGEmbedGrid from '@/components/IGEmbedGrid'
+
 
 export default function HomePage() {
   return (
@@ -19,7 +21,7 @@ export default function HomePage() {
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/consult" className="btn">Book a Consultation</Link>
-            <Link href="/services" className="btn ghost">Translator Services</Link>
+         
           </div>
         </div>
         <div className="polaroid relative">
@@ -37,6 +39,10 @@ export default function HomePage() {
         </div>
       </section>
 
+        <section className="space-y-6 mt-10">
+        <h2 className="text-2xl font-bold text-center">Latest from Instagram</h2>
+        <ScrapbookGallery />
+      </section>
       <ScrapCard>
         <h2 className="text-2xl font-extrabold mb-2">Follow along</h2>
         <p className="text-ink/80 mb-4">Daily snippets of life in Uruguay:</p>
@@ -46,24 +52,6 @@ export default function HomePage() {
           <a href="https://www.youtube.com/@MaddieinMontevideo" target="_blank" className="btn">YouTube</a>
         </div>
       </ScrapCard>
-
-      <section className="space-y-6 mt-10">
-        <h2 className="text-2xl font-bold text-center">Latest from Instagram</h2>
-        <ScrapbookGallery />
-      </section>
-
-      <div className="grid lg:grid-cols-2 gap-8">
-        <ScrapCard>
-          <h3 className="text-xl font-bold mb-2">Translator services</h3>
-          <p className="text-ink/80">Help for immigration/residency appointments. In-person support and document translation.</p>
-          <Link href="/services" className="btn mt-4">Learn more</Link>
-        </ScrapCard>
-        <ScrapCard>
-          <h3 className="text-xl font-bold mb-2">1:1 Consultations</h3>
-          <p className="text-ink/80">Zoom/Meet calls about moving to Uruguay, paperwork, lifestyle and more.</p>
-          <Link href="/consult" className="btn mt-4">Book now</Link>
-        </ScrapCard>
-      </div>
     </div>
   )
 }
