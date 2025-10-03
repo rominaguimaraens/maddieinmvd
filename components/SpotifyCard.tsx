@@ -11,10 +11,10 @@ type Props = {
 }
 
 export default function SpotifyCard({
-  url = "https://open.spotify.com/embed/playlist/37i9dQZF1DXaPKG3ZvmX8f?utm_source=generator",
+  url = "open.spotify.com/embed/playlist/37i9dQZF1DXaPKG3ZvmX8f?utm_source=generator",
   fallbackImg = "/textures/paper.png", // put a cute cover in /public and change this
   title = "What I’m listening to",
-  note = "Soft pop + girly vibes while editing ✨",
+  note = "Cozy sleepover vibes ✨",
 }: Props) {
   const [loaded, setLoaded] = useState(false)
   const [blocked, setBlocked] = useState(false)
