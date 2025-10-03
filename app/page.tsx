@@ -42,12 +42,7 @@ export default function HomePage() {
         <h2 className="text-2xl font-bold text-center">Latest from Instagram</h2>
         <ScrapbookGallery />
       </section>
-      <SpotifyCard
-  url="https://open.spotify.com/embed/playlist/37i9dQZF1DXaPKG3ZvmX8f"
-  fallbackImg="/gallery/pride-building.png"   // put a dedicated cover if you want
-  title="Maddie’s editing playlist"
-  note="Chill pop & sunshine energy"
-/>
+      <section className="space-y-6 mt-10">
       <ScrapCard>
         <h2 className="text-2xl font-extrabold mb-2">Follow along</h2>
         <p className="text-ink/80 mb-4">Daily snippets of life in Uruguay:</p>
@@ -57,6 +52,14 @@ export default function HomePage() {
           <a href="https://www.youtube.com/@MaddieinMontevideo" target="_blank" className="btn">YouTube</a>
         </div>
       </ScrapCard>
+      </section>
+      <section className="space-y-6 mt-10">
+      <SpotifyCard
+      url="httpshttps://open.spotify.com/embed/show/4PX0a6D6I5Fb9Tu2T8OtBV?utm_source=generator"
+      fallbackImg="/gallery/pride-building.png"   // put a dedicated cover if you want
+      title="Podcast 🎙️"
+      />
+    </section>
     </div>
   )
 }
