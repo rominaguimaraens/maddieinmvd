@@ -1,0 +1,1 @@
+export default function SuccessPage(){return(<div className='max-w-xl text-center space-y-4'><h1 className='text-3xl font-extrabold'>Message sent ✅</h1><p className='text-ink/80'>Thanks for reaching out! We’ll get back to you soon.</p><a className='btn' href='/'>Back home</a></div>)}

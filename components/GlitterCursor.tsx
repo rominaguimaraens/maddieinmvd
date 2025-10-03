@@ -1,0 +1,4 @@
+'use client'
+import { useEffect } from 'react'
+const colors=['#BEE3FF','#CFF5D2','#FFC7E3']
+export default function GlitterCursor(){useEffect(()=>{const make=(x:number,y:number)=>{const el=document.createElement('span');el.className='sparkle';el.style.left=x+'px';el.style.top=y+'px';el.style.background=colors[Math.floor(Math.random()*colors.length)];document.body.appendChild(el);setTimeout(()=>el.remove(),650)};const onMove=(e:MouseEvent)=>{make(e.clientX,e.clientY);if(Math.random()>0.5)make(e.clientX+(Math.random()*12-6),e.clientY+(Math.random()*12-6))};window.addEventListener('mousemove',onMove);return()=>window.removeEventListener('mousemove',onMove)},[]);return null}

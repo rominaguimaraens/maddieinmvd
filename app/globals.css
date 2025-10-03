@@ -1,0 +1,79 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@400;600;800&display=swap');
+@tailwind base;@tailwind components;@tailwind utilities;
+
+:root{
+  --ink:#40384A;
+  --bg1:#EAF5FF; 
+  --bg2:#FFC7E3; 
+  --bg3:#FFDDEB; 
+  --accent:#CFF5D2;
+}
+
+html,body{height:100%}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+  pointer-events: none;
+  z-index: 0;
+}
+body {
+  color: var(--ink);
+  background:
+    radial-gradient(70rem 70rem at 20% 10%, var(--bg1) 0%, transparent 60%),
+    radial-gradient(50rem 50rem at 80% 30%, var(--accent) 0%, transparent 55%),
+    radial-gradient(60rem 60rem at 40% 85%, var(--bg2) 0%, transparent 60%),
+    linear-gradient(
+      180deg,
+      var(--bg1) 0%,
+      #fceeff 20%,
+      var(--bg2) 40%,
+      #ffd9ec 60%,
+      var(--bg3) 80%,
+      #ffeaf2 100%
+    );
+}
+
+.scrap-container{position:relative;isolation:isolate;}
+.paper{background:#ffffffb8;border:1px dashed rgba(190,227,255,.9);border-radius:18px;padding:1.2rem;box-shadow:0 10px 26px rgba(140,190,255,.35)}
+.paper.torn{background-image:radial-gradient(circle at 10px 10px,#fff 10px,transparent 11px),radial-gradient(circle at 10px 10px,#fff 10px,transparent 11px);background-size:22px 22px;background-repeat:repeat-x;background-position:top left,bottom left}
+.tape{position:absolute;width:90px;height:28px;background:linear-gradient(180deg,#EAF5FF 0%,#CFF5D2 100%);box-shadow:0 6px 18px rgba(120,170,240,.25);transform:rotate(-6deg);left:16px;top:-12px;border-radius:6px;opacity:.9}
+.tape.right{left:auto;right:16px;transform:rotate(7deg)}
+.sticker{display:inline-block;background:#EAF5FF;border:2px solid #b7dcff;border-radius:999px;padding:.45rem .9rem;box-shadow:2px 4px 0 #93c2f5}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.65rem 1.1rem;border-radius:14px;font-weight:700;
+  background:#BEE3FF;color:#40384A;box-shadow:2px 4px 0 #93c2f5,inset 0 0 0 2px #7fb7ff;text-shadow:0 1px 0 #fff;transition:transform .1s ease-in-out}
+.btn:hover{transform:scale(1.02);box-shadow:2px 6px 0 #93c2f5,inset 0 0 0 2px #7fb7ff}
+.btn.ghost{background:transparent;border:2px solid #7fb7ff}
+
+.nav-pill{background:#eaf5ffb3;border:1px solid #bfe3ff;backdrop-filter: blur(6px)}
+h1,h2,h3{font-family:'Poppins',system-ui;letter-spacing:-.01em}
+.highlight{background:linear-gradient(180deg, rgba(255,255,255,0) 60%, #daf0ff 60%)}
+.polaroid{background:#fff;padding:.6rem .6rem 2rem;border-radius:12px;box-shadow:0 18px 40px rgba(30,60,120,.2)}
+.rotate-2{transform:rotate(2deg)}.rotate--2{transform:rotate(-2deg)}
+footer{color:#5b4e61}
+
+/* sparkle cursor */
+.sparkle{position:fixed;width:9px;height:9px;border-radius:50%;pointer-events:none;mix-blend-mode:screen;filter:blur(.2px);transform:translate(-50%,-50%);animation:sparkle-pop 650ms ease-out forwards;box-shadow:0 0 8px rgba(255,255,255,.8),0 0 16px rgba(255,255,255,.5)}
+@keyframes sparkle-pop{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}10%{opacity:.95}100%{opacity:0;transform:translate(-50%,-50%) scale(1.8)}}
+.btn,.sticker{position:relative;overflow:hidden}
+.btn::after,.sticker::after{content:'';position:absolute;inset:-40%;background:
+  radial-gradient(circle at 20% 30%, rgba(190,227,255,.35), transparent 35%),
+  radial-gradient(circle at 80% 20%, rgba(207,245,210,.35), transparent 35%),
+  radial-gradient(circle at 50% 80%, rgba(255,199,227,.3), transparent 35%);
+transform:scale(0);transition:transform .35s ease;border-radius:50%;z-index:-1}
+.btn:hover::after,.sticker:hover::after{transform:scale(1)}
+
+/* Washi corners for hero polaroid */
+.washi-corner{position:absolute;width:50px;height:22px;background:linear-gradient(135deg,#BEE3FF,#CFF5D2);opacity:.85;box-shadow:0 2px 6px rgba(0,0,0,.12);border-radius:4px;z-index:10}
+.washi-corner.top.left{top:-10px;left:-10px;transform:rotate(-10deg)}
+.washi-corner.top.right{top:-10px;right:-10px;transform:rotate(12deg)}
+.washi-corner.bottom.left{bottom:-10px;left:-10px;transform:rotate(8deg)}
+.washi-corner.bottom.right{bottom:-10px;right:-10px;transform:rotate(-8deg)}
+
+/* Gallery frames */
+.scrapbook-frame{border:2px solid #BEE3FF;box-shadow:3px 5px 0 #93c2f5,inset 0 0 0 1px #e0f3ff;border-radius:14px;background:#ffffffd9}
+.washi-strip{position:absolute;top:0;width:70px;height:24px;background:linear-gradient(135deg,#BEE3FF 0%,#CFF5D2 100%);opacity:.85;z-index:20;border-radius:4px}
+.washi-strip.left{left:10px;transform:rotate(-8deg)} .washi-strip.right{right:10px;transform:rotate(6deg)}
