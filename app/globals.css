@@ -2,39 +2,87 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@400;600;800&display=swap');
 @tailwind base;@tailwind components;@tailwind utilities;
 
-:root{
+:root {
   --ink:#40384A;
-  --bg1:#EAF5FF; 
-  --bg2:#FFC7E3; 
-  --bg3:#FFDDEB; 
-  --accent:#CFF5D2;
+  --bg1:#EAF5FF; /* baby blue */
+  --bg2:#FFC7E3; /* pink */
+  --bg3:#FFDDEB; /* warm pink */
+  --accent:#CFF5D2; /* mint */
 }
 
-html,body{height:100%}
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
-  pointer-events: none;
-  z-index: 0;
+/* ensure nothing else paints over it */
+html, body {
+  height: 100%;
+  background: transparent;
 }
+
+/* create a stacking context so ::before/::after z-index works */
 body {
+  position: relative;
+  isolation: isolate;
   color: var(--ink);
   background:
     radial-gradient(70rem 70rem at 20% 10%, var(--bg1) 0%, transparent 60%),
-    radial-gradient(50rem 50rem at 80% 30%, var(--accent) 0%, transparent 55%),
+    radial-gradient(60rem 60rem at 80% 30%, var(--accent) 0%, transparent 55%),
     radial-gradient(60rem 60rem at 40% 85%, var(--bg2) 0%, transparent 60%),
     linear-gradient(
       180deg,
       var(--bg1) 0%,
-      #fceeff 20%,
-      var(--bg2) 40%,
-      #ffd9ec 60%,
-      var(--bg3) 80%,
-      #ffeaf2 100%
+      #fceeff 25%,
+      #ffd9ec 45%,
+      #ffeaf2 65%,
+      var(--bg3) 85%,
+      #fff6fa 100%
     );
 }
+
+/* gradient layer (behind everything, seamless) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(70rem 70rem at 20% 10%, var(--bg1) 0%, transparent 60%),
+    radial-gradient(60rem 60rem at 80% 30%, var(--accent) 0%, transparent 55%),
+    radial-gradient(60rem 60rem at 40% 85%, var(--bg2) 0%, transparent 60%),
+    linear-gradient(
+      180deg,
+      var(--bg1) 0%,
+      #dceeff 15%,
+      #fceeff 35%,
+      #ffd9ec 55%,
+      #ffeaf2 75%,
+      var(--bg3) 95%,
+      #fff6fa 100%
+    );
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* paper texture overlay (on top of gradient) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  /* local file so CSP/CORS won't block it */
+  background-image: url("/textures/paper1.png");
+  background-repeat: repeat;
+  background-size: 600px;
+
+  /* makes the texture actually visible over pastels */
+  mix-blend-mode: multiply;   /* soften into the gradient */
+  opacity: 0.6
+;               /* adjust 0.25–0.6 to taste */
+
+  /* tiny polish */
+  filter: contrast(1.05) brightness(1.02);
+}
+
 
 .scrap-container{position:relative;isolation:isolate;}
 .paper{background:#ffffffb8;border:1px dashed rgba(190,227,255,.9);border-radius:18px;padding:1.2rem;box-shadow:0 10px 26px rgba(140,190,255,.35)}
