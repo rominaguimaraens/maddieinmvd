@@ -4,7 +4,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import ScrapCard from '@/components/ScrapCard'
 import ScrapbookGallery from '@/components/ScrapbookGallery'
-import IGEmbedGrid from '@/components/IGEmbedGrid'
 
 
 export default function HomePage() {
