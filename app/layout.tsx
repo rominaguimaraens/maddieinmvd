@@ -6,13 +6,17 @@ import ThemeToggle from '@/components/ThemeToggle'
 
 
 export const metadata = {
-  title: 'Maddie in Montevideo — maddieinmvd',
+  title: 'Maddie in Montevideo',
   description: 'Australian creator living in Uruguay. Lifestyle and fashion content.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+       <head>
+        <link rel="preconnect" href="https://open.spotify.com" />
+        <link rel="preconnect" href="https://i.scdn.co" />
+      </head>
       <body className="min-h-screen font-display">
         <header className="sticky top-4 z-50">
           <nav className="mx-auto max-w-6xl px-4">
