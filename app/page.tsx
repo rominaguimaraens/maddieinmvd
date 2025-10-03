@@ -56,7 +56,7 @@ export default function HomePage() {
       <section className="space-y-6 mt-10">
       <SpotifyCard
       url="httpshttps://open.spotify.com/embed/show/4PX0a6D6I5Fb9Tu2T8OtBV?utm_source=generator"
-      fallbackImg="/gallery/pride-building.png"   // put a dedicated cover if you want
+      fallbackImg="/gallery/podcast.jpg"   // put a dedicated cover if you want
       title="Podcast 🎙️"
       />
     </section>
