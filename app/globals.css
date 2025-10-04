@@ -1,37 +1,33 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@400;600;800&display=swap');
-@tailwind base;@tailwind components;@tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  /* text */
   --ink: #40384A;
   --ink-soft: #5b4e61;
+  --bg1: #EAF5FF;
+  --bg2: #FFC7E3;
+  --bg3: #FFDDEB;
+  --accent: #CFF5D2;
 
-  /* background gradient stops (you already use these) */
-  --bg1: #EAF5FF;   /* baby blue */
-  --bg2: #FFC7E3;   /* pink */
-  --bg3: #FFDDEB;   /* warm pink */
-  --accent: #CFF5D2;/* mint */
+  --on-card: #40384A;
+  --muted: color-mix(in oklab, var(--ink) 70%, #fff 30%);
+  --header-ink: #40384A;
 
-  /* text inside cards/polaroids */
-  --on-card: #40384A; 
-  --muted: color-mix(in oklab, var(--ink) 70%, #fff 30%); 
-  /* header container bg is already --header-inner */
-  --header-ink: #40384A;               /* title + nav text (day) */
-  --nav-pill-bg: #F3EDFF;              /* pill bg (day) */
-  --nav-pill-fg: #40384A;              /* pill text (day) */
-  --nav-pill-border: #b7a9ff;          /* pill border (day) */
+  --nav-pill-bg: #F3EDFF;
+  --nav-pill-fg: #40384A;
+  --nav-pill-border: #b7a9ff;
   --nav-pill-shadow: 2px 4px 0 #c7bcff;
-  /* components (DAYDREAM) */
-  --card-bg: rgba(255,255,255,0.86);
+
+  --card-bg: rgba(255, 255, 255, 0.86);
   --card-border: #bfe3ff;
   --card-inner: #e9f5ff;
---header-inner: #fff;  /* light mode inner header bg */
   --polaroid-bg: #ffffff;
-  --polaroid-shadow: 0 18px 40px rgba(30,60,120,.20);
+  --polaroid-shadow: 0 18px 40px rgba(30, 60, 120, 0.20);
 
-  --tape-from: #BEE3FF; /* baby blue */
-  --tape-to:   #CFF5D2; /* mint */
+  --tape-from: #BEE3FF;
+  --tape-to: #CFF5D2;
 
   --btn-bg: #BEE3FF;
   --btn-fg: #40384A;
@@ -43,114 +39,37 @@
   --sticker-border: #b7dcff;
 
   --ring: 0 0 0 2px var(--btn-border);
-  --header-bg: rgba(255,255,255,0.6);
+  --header-bg: rgba(255, 255, 255, 0.6);
   --header-border: #bfe3ff;
-  --header-shadow: 0 8px 30px rgba(140,190,255,.25);
+  --header-shadow: 0 8px 30px rgba(140, 190, 255, 0.25);
+  --header-inner: #fff;
+
+  /* Title gradient (day) */
+  --title-grad-from: #67b5ff;
+  --title-grad-to: #ff9fd4;
+
+  /* Toggle pill defaults (inherits nav-pill styles) */
+  --toggle-bg: var(--nav-pill-bg);
+  --toggle-fg: var(--nav-pill-fg);
+  --toggle-border: var(--nav-pill-border);
+  --toggle-shadow: var(--nav-pill-shadow);
 }
-/* NIGHTDREAM: flip tokens here — no component code changes needed */
-:root[data-theme="night"] {
-  --ink: #2B2333;
-  --ink-soft: #4a3f55;
-
-  --bg1: #E4E0FF;
-  --bg2: #E7D6FF;
-  --bg3: #EADDFB;
-  --accent: #CFF5D2;
-/* cards/polaroids in night */
-  --card-bg: #445775;        /* dark-ish pastel blue */
-  --card-border: #a8b7df;
-  --card-inner: rgba(255,255,255,0.08);
-
-  --polaroid-bg: #445775;    /* same as cards */
-  --polaroid-shadow: 0 18px 44px rgba(37, 45, 73, 0.35);
-  --header-ink: #F5F2FF;               /* off‑white for title + nav */
-  --nav-pill-bg: #4a5270;              /* dark pastel blue */
-  --nav-pill-fg: #F5F2FF;              /* off‑white text */
-  --nav-pill-border: #9aa8cf;          /* soft steel border */
-  --nav-pill-shadow: 2px 4px 0 #8ea0d2;
-  /* washi gradient (dark purple) */
-  --tape-from: #716aa7;
-  --tape-to:   #4e4a76;
- --header-inner: #3a435c;  /* dark pastel blue-gray */
-  /* text inside cards/polaroids at night */
-  --on-card: #F5F2FF;       /* off‑white on cards */
-  --muted:  #D8D0EA;        /* softer off‑white for notes */
-
-  --card-bg: #3f4e6b;
-  --card-border: #c8bcff;
-  --card-inner: rgba(255,255,255,0.06);
-
-  /* ✨ updated pastel-night navy polaroid */
-  --polaroid-bg: #3f4362;  /* soft muted navy with lavender hue */
-  --polaroid-shadow: 0 18px 44px rgba(60, 50, 90, 0.25);
-
-  /* 💜 unified dark purple washi gradient */
-  --tape-from: #6c4a8a;
-  --tape-to:   #4e4a76;
-
-  --btn-bg: #CBBEFF;
-  --btn-fg: #2B2333;
-  --btn-border: #a79af7;
-  --btn-shadow: 2px 4px 0 #998cf0;
-
-  --ghost-border: #a79af7;
-  --sticker-bg: #EBE6FF;
-  --sticker-border: #cfc6ff;
-  --header-bg: rgba(36, 44, 68, 0.7);     /* dark glassy blue */
-  --header-border: #92a2cd;
-  --header-shadow: 0 8px 30px rgba(30, 40, 70, .35);
-}
-:root[data-theme="night"] body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(1200px 800px at 70% 20%, rgba(0,0,0,0.08), transparent 60%),
-              linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(0,0,0,0.06));
-}
-/* ensure nothing else paints over it */
-html, body {
-  height: 100%;
-  background: transparent;
-}
-html, body { color: var(--ink); }
-
-/* ensure anything with a card/ polaroid/ frame uses on-card text */
-.paper, .scrapbook-frame, .polaroid { color: var(--on-card); }
-
-/* generic muted helper */
-.muted { color: var(--muted); }
-
-/* smooth theme transitions */
-* { transition: background-color .25s, color .25s, border-color .25s, box-shadow .25s, filter .25s; }
-
-/* create a stacking context so ::before/::after z-index works */
-body {
-  position: relative;
-  isolation: isolate;
-  color: var(--ink);
-  background:
-    radial-gradient(70rem 70rem at 20% 10%, var(--bg1) 0%, transparent 60%),
-    radial-gradient(60rem 60rem at 80% 30%, var(--accent) 0%, transparent 55%),
-    radial-gradient(60rem 60rem at 40% 85%, var(--bg2) 0%, transparent 60%),
-    linear-gradient(
-      180deg,
-      var(--bg1) 0%,
-      #fceeff 25%,
-      #ffd9ec 45%,
-      #ffeaf2 65%,
-      var(--bg3) 85%,
-      #fff6fa 100%
-    );
+/* Base (day) vignette placeholder so :before exists */
+html::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  pointer-events:none;
+  background:transparent;
 }
 
-/* gradient layer (behind everything, seamless) */
+/* Gradient BG layer — DAY */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   pointer-events: none;
   background:
     radial-gradient(70rem 70rem at 20% 10%, var(--bg1) 0%, transparent 60%),
@@ -166,230 +85,437 @@ body::before {
       var(--bg3) 95%,
       #fff6fa 100%
     );
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
-/* paper texture overlay (on top of gradient) */
+:root[data-theme="night"] {
+  --ink: #2B2333;
+  --ink-soft: #4a3f55;
+  --header-ink: #F5F2FF;   /* off‑white for header title + nav pills */
+  --bg1: #d7c4f3;  /* soft lilac */
+  --bg2: #e4bfff;  /* pastel orchid */
+  --bg3: #e8d7ff;  /* lavender haze */
+  --accent: #f0caff;  /* blush purple accent */
+
+  --card-bg: #3f4e6b;
+  --card-border: #c8bcff;
+  --card-inner: rgba(255, 255, 255, 0.06);
+
+  --polaroid-bg: #3f4362;
+  --polaroid-shadow: 0 18px 44px rgba(60, 50, 90, 0.25);
+
+  --on-card: #F5F2FF;
+  --muted: #D8D0EA;
+
+  --nav-pill-bg: #4a5270;
+  --nav-pill-fg: #F5F2FF;
+  --nav-pill-border: #9aa8cf;
+  --nav-pill-shadow: 2px 4px 0 #8ea0d2;
+
+  --tape-from: #6c4a8a;
+  --tape-to: #4e4a76;
+
+  --btn-bg: #CBBEFF;
+  --btn-fg: #2B2333;
+  --btn-border: #a79af7;
+  --btn-shadow: 2px 4px 0 #998cf0;
+
+  --ghost-border: #a79af7;
+  --sticker-bg: #EBE6FF;
+  --sticker-border: #cfc6ff;
+
+  --header-bg: rgba(36, 44, 68, 0.7);
+  --header-border: #92a2cd;
+  --header-shadow: 0 8px 30px rgba(30, 40, 70, 0.35);
+  --header-inner: #3a435c;
+
+  --title-grad-from: #c9c2ff;
+  --title-grad-to: #a7e7d0;
+
+  --night-sky-1: #5b66a3;
+  --night-sky-2: #4d5a8b;
+  --night-sky-3: #6a74ad;
+  --night-sky-vignette: rgba(22, 24, 40, 0.30);
+   /* pastel night-sky palette (darker but soft) */
+  --night-viola: #5a56a8;   /* violet/indigo */
+  --night-lav:   #7068c9;   /* lavender */
+  --night-corn:  #5b7ab8;   /* cornflower blue */
+  --night-deep:  #2a2f55;   /* deep vignette */
+}
+
+:root[data-theme="night"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+
+  background:
+    /* warm pastel lavender bloom top left */
+    radial-gradient(1200px 800px at 20% 10%, #e2d4ff 0%, transparent 60%),
+    /* icy pastel purple bloom top right */
+    radial-gradient(1000px 700px at 85% 15%, #cdbbfa 0%, transparent 60%),
+    /* soft minty violet bottom center */
+    radial-gradient(800px 600px at 50% 90%, #d0f5ea 0%, transparent 60%),
+    /* gradient sweep with purples and soft blue */
+    linear-gradient(
+      180deg,
+      #d5c9f9 0%,
+      #c6b2f0 30%,
+      #b9a5e6 55%,
+      #b0d4e0 80%,
+      #c6eff0 100%
+    );
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+:root[data-theme="night"] html::before {
+  background:
+    radial-gradient(1200px 800px at 70% 20%, rgba(42,47,85,.35), transparent 60%),
+    linear-gradient(to bottom, rgba(0,0,0,0.22), rgba(0,0,0,0.08));
+}
+
+/* Paper texture layer */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-
-  /* local file so CSP/CORS won't block it */
   background-image: url("/textures/paper1.png");
   background-repeat: repeat;
   background-size: 600px;
-
-  /* makes the texture actually visible over pastels */
-  mix-blend-mode: multiply;   /* soften into the gradient */
-  opacity: 0.6
-;               /* adjust 0.25–0.6 to taste */
-
-  /* tiny polish */
+  mix-blend-mode: multiply;
+  opacity: 0.6;
   filter: contrast(1.05) brightness(1.02);
 }
+
+html, body {
+  height: 100%;
+  background: transparent;
+  color: var(--ink);
+}
+/* Ensure stacking context for the fixed layers */
+body{ position:relative; isolation:isolate; }
+
 * {
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease;
+  transition: background-color .25s, color .25s, border-color .25s, box-shadow .25s, filter .25s;
 }
 
-.header-inner {
-  background: var(--header-inner);
-  color: var(--header-ink);              /* makes title + links theme-aware */
-  border-radius: 999px;
-  padding: .75rem 1rem;
-  display: flex; align-items: center; gap: 1rem;
-  transition: background-color .25s, color .25s, border-color .25s, box-shadow .25s;
+/* === Theme accent (used for titles AND that "Australian in Uruguay" line) === */
+:root { --title-accent: #0284a8; }               /* day: cyan/teal */
+:root[data-theme="night"] { --title-accent: #8fe1d6; } /* night: soft mint */
+
+/* Apply accent where needed */
+.accent { color: var(--title-accent) !important; }
+
+/* Section/box titles */
+.section-title,
+.title,
+.scrapbook-frame > h2,
+.paper > h2,
+.polaroid > h2 {
+  color: var(--title-accent) !important;
+  font-weight: 800;
 }
 
-/* brand/title (inherits color) */
-.brand {
+/* Base text + notes already theme-aware, but keep these just in case */
+body, p, li, small, span, h1, h2, h3, h4, h5, h6 { color: var(--ink); }
+.note, .muted, .subtitle, .text-ink\/80 { color: var(--muted) !important; }
+
+/* Floating CTA helper (so it’s always on top) */
+.fab {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 60;
+}
+
+/* Buttons (theme tokens already set) */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:.65rem 1.1rem; border-radius:14px; font-weight:700;
+  background:var(--btn-bg); color:var(--btn-fg);
+  box-shadow:var(--btn-shadow), inset 0 0 0 2px var(--btn-border);
+  text-shadow:0 1px 0 rgba(255,255,255,.6);
+  transition: transform .1s ease-in-out, box-shadow .15s ease-in-out, background .2s ease;
+}
+.btn:hover{ transform:scale(1.02); box-shadow:2px 6px 0 var(--btn-border), inset 0 0 0 2px var(--btn-border); }
+.btn.ghost{ background:transparent; color:var(--ink); border-radius:14px; box-shadow: inset 0 0 0 2px var(--ghost-border); }
+/* Theme-aware text */
+body { color: var(--ink); }
+.paper, .scrapbook-frame, .polaroid { color: var(--on-card); }
+.muted { color: var(--muted); }
+
+/* BRAND TITLE */
+.brand-title {
   font-weight: 800;
   letter-spacing: .2px;
-  color: inherit;                        /* follow --header-ink */
-  text-decoration: none;
+  color: var(--header-ink);     /* solid, not gradient */
+}
+.brand-sub {
+  font-weight: 800;
+  color: var(--header-ink);
+  letter-spacing: .2px;
 }
 
-/* nav pills used for About / Services / Contact */
-.nav-pill {
-  display:inline-flex; align-items:center; justify-content:center;
-  padding: .55rem 1rem;
+/* THEME TOGGLE */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
   border-radius: 999px;
   font-weight: 700;
-  background: var(--nav-pill-bg);
-  color: var(--nav-pill-fg);
-  box-shadow: var(--nav-pill-shadow), inset 0 0 0 2px var(--nav-pill-border);
-  transition: transform .1s, box-shadow .15s, background-color .2s, color .2s, border-color .2s;
+  background:var(--btn-bg); color:var(--btn-fg);
+  box-shadow:var(--btn-shadow), inset 0 0 0 2px var(--btn-border);
+  text-shadow:0 1px 0 rgba(255,255,255,.6);
+  transition: transform .1s ease-in-out, box-shadow .15s ease-in-out, background .2s ease;
+}
+.theme-toggle:hover { transform: scale(1.02); }
+
+/* NAVIGATION PILL */
+.nav-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+background:var(--btn-bg); color:var(--btn-fg);
+  box-shadow:var(--btn-shadow), inset 0 0 0 2px var(--btn-border);
+  text-shadow:0 1px 0 rgba(255,255,255,.6);
+  transition: transform .1s ease-in-out, box-shadow .15s ease-in-out, background .2s ease;
 }
 .nav-pill:hover { transform: scale(1.02); }
 
-/* kill any hardcoded bg-* on washi */
-.washi-strip, .washi-corner {
-  background: linear-gradient(135deg, var(--tape-from), var(--tape-to)) !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+/* HEADER INNER */
+.header-inner {
+  background: var(--header-inner);
+  color: var(--header-ink);
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
-.scrap-container{position:relative;isolation:isolate;}
-/* Cards / scrapbook paper */
+/* === SCRAPBOOK HOTFIX (paste at end of globals.css) ======================= */
+
+/* Make sure these tokens exist (fallbacks so nothing is transparent) */
+:root {
+  --card-bg: rgba(255,255,255,0.86);
+  --card-border: #bfe3ff;
+  --card-inner: #e9f5ff;
+  --polaroid-bg: #ffffff;
+  --polaroid-shadow: 0 18px 40px rgba(30,60,120,.20);
+  --tape-from: #BEE3FF;
+  --tape-to: #CFF5D2;
+}
+:root[data-theme="night"]{
+  --card-bg: #3f4e6b;
+  --card-border: #a8b7df;
+  --card-inner: rgba(255,255,255,.08);
+  --polaroid-bg: #3f4e6b;
+  --polaroid-shadow: 0 18px 44px rgba(37,45,73,.35);
+  --tape-from: #716aa7;
+  --tape-to: #4e4a76;
+}
+
+/* Ensure scrapbook containers are positioned and visible */
+.paper,
+.scrapbook-frame,
+.polaroid,
+.ig-card { position: relative; }
+
+/* Card / paper */
 .paper {
-  background: var(--card-bg);
-  border: 1px dashed var(--card-border);
+  background: var(--card-bg) !important;
+  border: 1px dashed var(--card-border) !important;
   border-radius: 18px;
   padding: 1.2rem;
   box-shadow: 0 10px 26px rgba(140,190,255,.25);
   backdrop-filter: saturate(1.1) blur(2px);
 }
-.paper.torn {
-  background-image:
-    radial-gradient(circle at 10px 10px, var(--card-bg) 10px, transparent 11px),
-    radial-gradient(circle at 10px 10px, var(--card-bg) 10px, transparent 11px);
-  background-size: 22px 22px;
-  background-repeat: repeat-x;
-  background-position: top left, bottom left;
-}
 
-/* Polaroid */
-.polaroid {
-  background: var(--card-bg); /* <- make it dynamic */
-  box-shadow: var(--polaroid-shadow);
-  padding: .6rem .6rem 2rem;
-  border-radius: 12px;
-  box-shadow: var(--polaroid-shadow);
-}
-
-/* Waschi tape + strips pick up theme */
-.washi-strip,
-.washi-corner {
-  background: linear-gradient(135deg, var(--tape-from), var(--tape-to));
-}
-
-/* Buttons */
-.btn {
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:.65rem 1.1rem;border-radius:14px;font-weight:700;
-  background: var(--btn-bg);
-  color: var(--btn-fg);
-  box-shadow: var(--btn-shadow), inset 0 0 0 2px var(--btn-border);
-  text-shadow: 0 1px 0 rgba(255,255,255,.6);
-  transition: transform .1s ease-in-out, box-shadow .15s ease-in-out, background .2s ease;
-}
-.btn:hover {
-  transform: scale(1.02);
-  box-shadow: 2px 6px 0 var(--btn-border), inset 0 0 0 2px var(--btn-border);
-}
-.btn.ghost {
-  background: transparent;
-  color: var(--ink);
-  border-radius:14px;
-  box-shadow: inset 0 0 0 2px var(--ghost-border);
-}
-
-/* Sticker pills (nav tags) */
-.sticker {
-  display:inline-block;
-  background: var(--sticker-bg);
-  border: 2px solid var(--sticker-border);
-  border-radius: 999px;
-  padding: .45rem .9rem;
-  box-shadow: 2px 4px 0 var(--btn-shadow, rgba(0,0,0,.08));
-}
-
-/* IG manual card (uses theme tokens) */
-.ig-card {
-  background: var(--polaroid-bg);
-  color: var(--on-card);
-  border: 2px solid var(--card-border);
-  box-shadow: 3px 5px 0 var(--btn-border), inset 0 0 0 1px var(--card-inner);
+/* Frame used by galleries / embeds */
+.scrapbook-frame {
+  background: var(--card-bg) !important;
+  border: 2px solid var(--card-border) !important;
+  box-shadow: 3px 5px 0 var(--btn-border, #93c2f5),
+              inset 0 0 0 1px var(--card-inner) !important;
   border-radius: 14px;
 }
-.site-header {
-  position: sticky; top: 0; z-index: 50;
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--header-border);
-  backdrop-filter: blur(8px) saturate(1.05);
-  box-shadow: var(--header-shadow);
-}
-/* photo styling */
-.ig-photo {
+
+/* Polaroid shell */
+.polaroid {
+  background: var(--polaroid-bg) !important;
   border-radius: 12px;
+  padding: .6rem .6rem 2rem;
+  box-shadow: var(--polaroid-shadow) !important;
+}
+
+/* IG manual card */
+.ig-card {
+  background: var(--polaroid-bg) !important;
+  color: var(--on-card);
+  border: 2px solid var(--card-border) !important;
+  box-shadow: 3px 5px 0 var(--btn-border, #93c2f5),
+              inset 0 0 0 1px var(--card-inner) !important;
+  border-radius: 14px;
+}
+
+/* Washi — color from theme, correct stacking */
+.washi-strip,
+.washi-corner {
+  position: absolute !important;
+  top: 0;
+  width: 70px;
+  height: 24px;
+  background: linear-gradient(135deg, var(--tape-from), var(--tape-to)) !important;
+  opacity: .90;
+  border-radius: 4px;
+  z-index: 20;                 /* above photos/cards */
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+}
+.washi-strip.left  { left: 10px;  transform: rotate(-8deg); }
+.washi-strip.right { right: 10px; transform: rotate(6deg);  }
+
+/* Images inside scrapbook items */
+.ig-photo,
+.polaroid img {
   display: block;
   width: 100%;
   height: auto;
   object-fit: cover;
+  border-radius: 12px;
 }
 
-/* captions + notes */
-.ig-title {
-  font-weight: 600;
-  text-align: center;
-  margin-top: .75rem;
+body, p, li, small, span, h1, h2, h3, h4, h5, h6 {
+  color: var(--ink);
 }
 
-.note { color: var(--muted); }
-
-.ig-note {
-  color: var(--muted);     /* <-- off‑white in Nightdream */
-  text-align: center;
-  font-size: .875rem;
-  margin-top: .25rem;
+/* Text inside scrapbook surfaces uses on-card */
+.paper p, .paper li,
+.scrapbook-frame p, .scrapbook-frame li,
+.polaroid p, .polaroid li,
+.ig-card p, .ig-card li {
+  color: var(--on-card);
 }
 
-/* washi always uses theme */
-.washi-strip, .washi-corner {
-  background: linear-gradient(135deg, var(--tape-from), var(--tape-to)) !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+/* Notes / subtitles */
+.note, .muted, .subtitle {
+  color: var(--muted);
 }
 
-/* Frame around gallery embeds/polaroids */
-.scrapbook-frame {
-  background: var(--card-bg);                     /* <-- important */
-  border: 2px solid var(--card-border);
-  box-shadow: 3px 5px 0 var(--btn-border), inset 0 0 0 1px var(--card-inner);
-  border-radius: 14px;
+/* Captions / notes */
+.ig-title { font-weight: 600; text-align: center; margin-top: .75rem; }
+.ig-note, .note { color: var(--muted); text-align: center; font-size: .875rem; margin-top: .25rem; }
+.text-ink\/80 { color: var(--muted) !important; }
+/* Debug helper (optional) — uncomment to check layout boxes */
+/*
+.paper, .scrapbook-frame, .polaroid, .ig-card { outline: 1px dashed rgba(0,0,0,.1); }
+*/
+/* ===== Night sky gradient (darker; purple/blue pastel) ===== */
+:root[data-theme="night"] {
+  --night-viola: #5a56a8;   /* violet/indigo */
+  --night-lav:   #7068c9;   /* lavender */
+  --night-corn:  #5b7ab8;   /* cornflower */
+  --night-vign:  rgba(30, 32, 56, .35);
+
+  /* Make body text truly theme-aware at night */
+  --ink: #F0ECFA;           /* off‑white base text */
+  --ink-soft: #D8D0EA;      /* softer */
 }
 
-/* Nav capsule */
-.nav-pill {
-  background: color-mix(in oklab, var(--sticker-bg) 80%, #fff 20%);
-  border: 1px solid var(--card-border);
-  backdrop-filter: blur(6px);
+/* swap the body gradient only in night */
+:root[data-theme="night"] body::before {
+  background:
+    radial-gradient(80rem 56rem at 18% 8%,  color-mix(in oklab, var(--night-lav)   85%, white 15%) 0%, transparent 60%),
+    radial-gradient(70rem 60rem at 82% 22%, color-mix(in oklab, var(--night-corn) 80%, white 20%) 0%, transparent 60%),
+    radial-gradient(60rem 55rem at 45% 88%, color-mix(in oklab, var(--night-viola) 80%, white 20%) 0%, transparent 60%),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--night-viola) 80%, white 20%) 0%,
+      color-mix(in oklab, var(--night-corn)  80%, white 20%) 50%,
+      color-mix(in oklab, var(--night-lav)   80%, white 20%) 100%
+    );
 }
 
-/* Text colors */
-body { color: var(--ink); }
-p, .text-ink\/80 { color: color-mix(in oklab, var(--ink) 80%, #fff 20%) }
-
-
-/* sparkle cursor */
-.sparkle{position:fixed;width:9px;height:9px;border-radius:50%;pointer-events:none;mix-blend-mode:screen;filter:blur(.2px);transform:translate(-50%,-50%);animation:sparkle-pop 650ms ease-out forwards;box-shadow:0 0 8px rgba(255,255,255,.8),0 0 16px rgba(255,255,255,.5)}
-@keyframes sparkle-pop{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}10%{opacity:.95}100%{opacity:0;transform:translate(-50%,-50%) scale(1.8)}}
-.btn,.sticker{position:relative;overflow:hidden}
-.btn::after,.sticker::after{content:'';position:absolute;inset:-40%;background:
-  radial-gradient(circle at 20% 30%, rgba(190,227,255,.35), transparent 35%),
-  radial-gradient(circle at 80% 20%, rgba(207,245,210,.35), transparent 35%),
-  radial-gradient(circle at 50% 80%, rgba(255,199,227,.3), transparent 35%);
-transform:scale(0);transition:transform .35s ease;border-radius:50%;z-index:-1}
-.btn:hover::after,.sticker:hover::after{transform:scale(1)}
-
-/* Washi corners for hero polaroid */
-.washi-corner{position:absolute;width:50px;height:22px;background:linear-gradient(135deg,#BEE3FF,#CFF5D2);opacity:.85;box-shadow:0 2px 6px rgba(0,0,0,.12);border-radius:4px;z-index:10}
-.washi-corner.top.left{top:-10px;left:-10px;transform:rotate(-10deg)}
-.washi-corner.top.right{top:-10px;right:-10px;transform:rotate(12deg)}
-.washi-corner.bottom.left{bottom:-10px;left:-10px;transform:rotate(8deg)}
-.washi-corner.bottom.right{bottom:-10px;right:-10px;transform:rotate(-8deg)}
-
-/* Gallery frames */
-.scrapbook-frame{border:2px solid #BEE3FF;box-shadow:3px 5px 0 #93c2f5,inset 0 0 0 1px #e0f3ff;border-radius:14px;background:#ffffffd9}
-.washi-strip{position:absolute;top:0;width:70px;height:24px;background:linear-gradient(135deg,#BEE3FF 0%,#CFF5D2 100%);opacity:.85;z-index:20;border-radius:4px}
-.washi-strip.left{left:10px;transform:rotate(-8deg)} .washi-strip.right{right:10px;transform:rotate(6deg)}
-
-.instagram-media {
-  min-height: 400px;
+/* subtle vignette so background stays lighter than cards */
+:root[data-theme="night"] html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 800px at 70% 20%, var(--night-vign), transparent 60%),
+    linear-gradient(to bottom, rgba(0,0,0,0.22), rgba(0,0,0,0.08));
 }
 
+/* ===== Make all body text & notes theme-aware ===== */
+body, p, li, small, span, h1, h2, h3, h4, h5, h6 { color: var(--ink); }
 
+.paper p, .paper li,
+.scrapbook-frame p, .scrapbook-frame li,
+.polaroid p, .polaroid li,
+.ig-card p, .ig-card li { color: var(--on-card); }
+
+.note, .muted, .subtitle, .text-ink\/80 { color: var(--muted) !important; }
+
+/* ===== Section titles use the same accent as the “Australian in Uruguay” line ===== */
+/* Pick a single accent that works in both themes */
+:root { --title-accent: #0284a8; }              /* cyan/teal accent (day) */
+:root[data-theme="night"] { --title-accent: #8fe1d6; }  /* softer mint (night) */
+
+/* apply it to any section/box titles */
+.title, .section-title, .scrapbook-frame > h2, .paper > h2, .polaroid > h2 {
+  color: var(--title-accent);
+  font-weight: 800;
+}
+
+/* Header brand title = solid and theme-aware (no gradient) */
+.brand-title, .brand-sub { color: var(--header-ink); }
+
+/* ===== Bring back floating CTA reliably ===== */
+.fab {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 60;              /* above header (z-50) */
+  pointer-events: auto;
+}
+/* ===== NIGHT THEME BACKGROUND ONLY (final override) ===== */
+
+/* make sure nothing paints over the gradient */
+:root[data-theme="night"] html,
+:root[data-theme="night"] body { background: transparent !important; }
+
+/* high-contrast pastel night gradient (indigo → sapphire → orchid) */
+:root[data-theme="night"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(1100px 680px at 16% 12%, #6f5cf0 0%, rgba(111,92,240,0) 60%),
+    radial-gradient(980px 640px  at 84% 24%, #2f7cc6 0%, rgba(47,124,198,0) 60%),
+    radial-gradient(900px 600px  at 46% 88%, #4a3a8f 0%, rgba(74,58,143,0) 62%),
+    linear-gradient(180deg, #3b2f86 0%, #2f7cc6 52%, #a487ff 100%);
+  background-repeat: no-repeat !important;
+  background-size: cover;
+  background-attachment: fixed, fixed, fixed, fixed; /* avoids band “lines” on scroll */
+}
+
+/* subtle vignette behind gradient so bg stays lighter than cards */
+html::before { content:""; position: fixed; inset:0; z-index:-3; pointer-events:none; background: transparent; }
+:root[data-theme="night"] html::before {
+  background:
+    radial-gradient(1000px 700px at 70% 20%, rgba(22,24,44,.32), transparent 60%),
+    linear-gradient(to bottom, rgba(0,0,0,.18), rgba(0,0,0,.06));
+}
 

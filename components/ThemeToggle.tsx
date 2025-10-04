@@ -1,26 +1,27 @@
 'use client'
 import { useEffect, useState } from 'react'
+import clsx from 'clsx'
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ className = '' }: { className?: string }) {
   const [theme, setTheme] = useState<'day' | 'night'>('day')
 
   useEffect(() => {
-    // read saved preference
-    const saved = (localStorage.getItem('maddie-theme') as 'day' | 'night') || 'day'
-    setTheme(saved)
-    document.documentElement.setAttribute('data-theme', saved)
+    const current = document.documentElement.getAttribute('data-theme') as 'day' | 'night' | null
+    if (current) setTheme(current)
   }, [])
 
   const toggle = () => {
-    const next = theme === 'day' ? 'night' : 'day'
+    const next = theme === 'night' ? 'day' : 'night'
     setTheme(next)
     document.documentElement.setAttribute('data-theme', next)
-    localStorage.setItem('maddie-theme', next)
+    localStorage.setItem('theme', next)
   }
 
   return (
-    <button onClick={toggle} className="sticker" aria-label="Toggle theme">
-      {theme === 'day' ? '🌙 Nightdream' : '🌤️ Daydream'}
+    <button onClick={toggle} className={clsx('theme-toggle', className)}>
+      <span aria-hidden>{theme === 'night' ? '🌙' : '🌤️'}</span>
+      {theme === 'night' ? 'Nightdream' : 'Daydream'}
     </button>
   )
 }
+

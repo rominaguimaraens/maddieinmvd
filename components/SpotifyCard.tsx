@@ -31,11 +31,11 @@ export default function SpotifyCard({
     <div className="paper torn">
       <div className="mb-3 flex items-center gap-2">
         <span className="sticker">🎧</span>
-        <h3 className="text-xl font-bold">{title}</h3>
+        <h3 className="text-xl font-bold section-title">{title}</h3>
       </div>
 
       {!blocked ? (
-        <div className="rounded-xl overflow-hidden shadow-md bg-white">
+        <div className="rounded-xl overflow-hidden shadow-md scrapbook-frame">
           <iframe
             style={{ border: 0, width: '100%', height: 352 }}
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -50,7 +50,7 @@ export default function SpotifyCard({
           href={url.replace('/embed/', '/')} // open normal spotify page
           target="_blank"
           rel="noopener noreferrer"
-          className="block rounded-xl overflow-hidden shadow-md scrapbook-frame bg-white hover:scale-[1.01] transition"
+          className="block rounded-xl overflow-hidden shadow-md scrapbook-frame hover:scale-[1.01] transition"
           style={{ textDecoration: 'none' }}
         >
           <div className="relative" style={{ aspectRatio: '1.6 / 1' }}>

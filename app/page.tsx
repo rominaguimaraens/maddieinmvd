@@ -13,10 +13,10 @@ export default function HomePage() {
     <div className="space-y-14">
       <section className="grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-5">
-          <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">
-            <span className="highlight">Hi! I’m Maddie 👋</span><br/>
-            <span className="text-sky-700">Australian in Uruguay</span>
-          </h1>
+<h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">
+  <span className="highlight">Hi! I’m Maddie 👋</span><br/>
+  <span className="accent">Australian in Uruguay</span>
+</h1>
           <p className="text-lg text-ink/80">
             Scrapbook vibes, real stories about expat life in Montevideo — culture shocks, everyday joys, and everything in between.
           </p>
@@ -40,12 +40,12 @@ export default function HomePage() {
         </div>
       </section>
         <section className="space-y-6 mt-10">
-        <h2 className="text-2xl font-bold text-center">Latest from Instagram</h2>
+        <h2 className="section-title text-2xl font-bold text-center">Latest from Instagram</h2>
         <ScrapbookGallery />
       </section>
       <section className="space-y-6 mt-10">
       <ScrapCard>
-        <h2 className="text-2xl font-extrabold mb-2">Follow along</h2>
+       <h2 className="section-title text-2xl font-extrabold mb-2">Follow along</h2>
         <p className="note text-sm">Daily snippets of life in Uruguay:</p>
         <div className="flex flex-wrap gap-3">
           <a href="https://www.instagram.com/maddieinmvd" target="_blank" className="btn">Instagram</a>
