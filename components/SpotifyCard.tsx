@@ -69,7 +69,8 @@ export default function SpotifyCard({
         </a>
       )}
 
-      {note && <p className="text-sm text-ink/70 mt-3">{note}</p>}
+      {note && <p className="note text-sm mt-3">{note}</p>}
+
     </div>
   )
 }

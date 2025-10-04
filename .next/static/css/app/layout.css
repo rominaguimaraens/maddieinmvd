@@ -439,12 +439,22 @@ video {
   display: none;
 }.fixed{
   position: fixed;
+}.absolute{
+  position: absolute;
 }.relative{
   position: relative;
 }.sticky{
   position: sticky;
+}.inset-0{
+  inset: 0px;
+}.bottom-3{
+  bottom: 0.75rem;
 }.bottom-6{
   bottom: 1.5rem;
+}.left-3{
+  left: 0.75rem;
+}.right-3{
+  right: 0.75rem;
 }.right-6{
   right: 1.5rem;
 }.top-4{
@@ -484,6 +494,8 @@ video {
   height: 300px;
 }.h-\[360px\]{
   height: 360px;
+}.h-full{
+  height: 100%;
 }.min-h-screen{
   min-height: 100vh;
 }.w-full{
@@ -500,8 +512,6 @@ video {
   flex-direction: column;
 }.flex-wrap{
   flex-wrap: wrap;
-}.items-start{
-  align-items: flex-start;
 }.items-center{
   align-items: center;
 }.justify-between{
@@ -510,6 +520,8 @@ video {
   gap: 0.5rem;
 }.gap-3{
   gap: 0.75rem;
+}.gap-4{
+  gap: 1rem;
 }.gap-6{
   gap: 1.5rem;
 }.gap-8{
@@ -552,6 +564,8 @@ video {
   border-width: 1px;
 }.border-sky-200\/70{
   border-color: rgb(186 230 253 / 0.7);
+}.bg-black\/15{
+  background-color: rgb(0 0 0 / 0.15);
 }.bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
@@ -577,9 +591,6 @@ video {
 }.py-2{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-}.py-3{
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }.pl-5{
   padding-left: 1.25rem;
 }.pl-6{
@@ -618,10 +629,6 @@ video {
   line-height: 1.25;
 }.tracking-tight{
   letter-spacing: -0.025em;
-}.text-ink\/60{
-  color: rgb(64 56 74 / 0.6);
-}.text-ink\/70{
-  color: rgb(64 56 74 / 0.7);
 }.text-ink\/80{
   color: rgb(64 56 74 / 0.8);
 }.text-sky-700{
@@ -629,25 +636,138 @@ video {
   color: rgb(3 105 161 / var(--tw-text-opacity, 1));
 }.underline{
   text-decoration-line: underline;
+}.opacity-60{
+  opacity: 0.6;
 }.shadow-md{
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}.transition{
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 :root {
-  --ink:#40384A;
-  --bg1:#EAF5FF; /* baby blue */
-  --bg2:#FFC7E3; /* pink */
-  --bg3:#FFDDEB; /* warm pink */
-  --accent:#CFF5D2; /* mint */
-}
+  /* text */
+  --ink: #40384A;
+  --ink-soft: #5b4e61;
 
+  /* background gradient stops (you already use these) */
+  --bg1: #EAF5FF;   /* baby blue */
+  --bg2: #FFC7E3;   /* pink */
+  --bg3: #FFDDEB;   /* warm pink */
+  --accent: #CFF5D2;/* mint */
+
+  /* text inside cards/polaroids */
+  --on-card: #40384A; 
+  --muted: color-mix(in oklab, var(--ink) 70%, #fff 30%); 
+  /* header container bg is already --header-inner */
+  --header-ink: #40384A;               /* title + nav text (day) */
+  --nav-pill-bg: #F3EDFF;              /* pill bg (day) */
+  --nav-pill-fg: #40384A;              /* pill text (day) */
+  --nav-pill-border: #b7a9ff;          /* pill border (day) */
+  --nav-pill-shadow: 2px 4px 0 #c7bcff;
+  /* components (DAYDREAM) */
+  --card-bg: rgba(255,255,255,0.86);
+  --card-border: #bfe3ff;
+  --card-inner: #e9f5ff;
+--header-inner: #fff;  /* light mode inner header bg */
+  --polaroid-bg: #ffffff;
+  --polaroid-shadow: 0 18px 40px rgba(30,60,120,.20);
+
+  --tape-from: #BEE3FF; /* baby blue */
+  --tape-to:   #CFF5D2; /* mint */
+
+  --btn-bg: #BEE3FF;
+  --btn-fg: #40384A;
+  --btn-border: #7fb7ff;
+  --btn-shadow: 2px 4px 0 #93c2f5;
+
+  --ghost-border: #7fb7ff;
+  --sticker-bg: #EAF5FF;
+  --sticker-border: #b7dcff;
+
+  --ring: 0 0 0 2px var(--btn-border);
+  --header-bg: rgba(255,255,255,0.6);
+  --header-border: #bfe3ff;
+  --header-shadow: 0 8px 30px rgba(140,190,255,.25);
+}
+/* NIGHTDREAM: flip tokens here — no component code changes needed */
+:root[data-theme="night"] {
+  --ink: #2B2333;
+  --ink-soft: #4a3f55;
+
+  --bg1: #E4E0FF;
+  --bg2: #E7D6FF;
+  --bg3: #EADDFB;
+  --accent: #CFF5D2;
+/* cards/polaroids in night */
+  --card-bg: #445775;        /* dark-ish pastel blue */
+  --card-border: #a8b7df;
+  --card-inner: rgba(255,255,255,0.08);
+
+  --polaroid-bg: #445775;    /* same as cards */
+  --polaroid-shadow: 0 18px 44px rgba(37, 45, 73, 0.35);
+  --header-ink: #F5F2FF;               /* off‑white for title + nav */
+  --nav-pill-bg: #4a5270;              /* dark pastel blue */
+  --nav-pill-fg: #F5F2FF;              /* off‑white text */
+  --nav-pill-border: #9aa8cf;          /* soft steel border */
+  --nav-pill-shadow: 2px 4px 0 #8ea0d2;
+  /* washi gradient (dark purple) */
+  --tape-from: #716aa7;
+ --header-inner: #3a435c;  /* dark pastel blue-gray */
+  /* text inside cards/polaroids at night */
+  --on-card: #F5F2FF;       /* off‑white on cards */
+  --muted:  #D8D0EA;        /* softer off‑white for notes */
+
+  --card-bg: #3f4e6b;
+  --card-border: #c8bcff;
+  --card-inner: rgba(255,255,255,0.06);
+
+  /* ✨ updated pastel-night navy polaroid */
+  --polaroid-bg: #3f4362;  /* soft muted navy with lavender hue */
+  --polaroid-shadow: 0 18px 44px rgba(60, 50, 90, 0.25);
+
+  /* 💜 unified dark purple washi gradient */
+  --tape-from: #6c4a8a;
+  --tape-to:   #4e4a76;
+
+  --btn-bg: #CBBEFF;
+  --btn-fg: #2B2333;
+  --btn-border: #a79af7;
+  --btn-shadow: 2px 4px 0 #998cf0;
+
+  --ghost-border: #a79af7;
+  --sticker-bg: #EBE6FF;
+  --sticker-border: #cfc6ff;
+  --header-bg: rgba(36, 44, 68, 0.7);     /* dark glassy blue */
+  --header-border: #92a2cd;
+  --header-shadow: 0 8px 30px rgba(30, 40, 70, .35);
+}
+:root[data-theme="night"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(1200px 800px at 70% 20%, rgba(0,0,0,0.08), transparent 60%),
+              linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(0,0,0,0.06));
+}
 /* ensure nothing else paints over it */
 html, body {
   height: 100%;
-  background: transparent;
+  background: transparent; color: var(--ink);
 }
+
+/* ensure anything with a card/ polaroid/ frame uses on-card text */
+.paper, .scrapbook-frame, .polaroid { color: var(--on-card); }
+
+/* generic muted helper */
+.muted { color: var(--muted); }
+
+/* smooth theme transitions */
+* { transition: background-color .25s, color .25s, border-color .25s, box-shadow .25s, filter .25s; }
 
 /* create a stacking context so ::before/::after z-index works */
 body {
@@ -715,26 +835,178 @@ body::after {
   /* tiny polish */
   filter: contrast(1.05) brightness(1.02);
 }
+* {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
 
+.header-inner {
+  background: var(--header-inner);
+  color: var(--header-ink);              /* makes title + links theme-aware */
+  border-radius: 999px;
+  padding: .75rem 1rem;
+  display: flex; align-items: center; gap: 1rem;
+  transition: background-color .25s, color .25s, border-color .25s, box-shadow .25s;
+}
 
+/* brand/title (inherits color) */
+.brand {
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: inherit;                        /* follow --header-ink */
+  text-decoration: none;
+}
+
+/* nav pills used for About / Services / Contact */
+.nav-pill {
+  display:inline-flex; align-items:center; justify-content:center;
+  padding: .55rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  background: var(--nav-pill-bg);
+  color: var(--nav-pill-fg);
+  box-shadow: var(--nav-pill-shadow), inset 0 0 0 2px var(--nav-pill-border);
+  transition: transform .1s, box-shadow .15s, background-color .2s, color .2s, border-color .2s;
+}
+.nav-pill:hover { transform: scale(1.02); }
+
+/* kill any hardcoded bg-* on washi */
+.washi-strip, .washi-corner {
+  background: linear-gradient(135deg, var(--tape-from), var(--tape-to)) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+}
 .scrap-container{position:relative;isolation:isolate;}
-.paper{background:#ffffffb8;border:1px dashed rgba(190,227,255,.9);border-radius:18px;padding:1.2rem;box-shadow:0 10px 26px rgba(140,190,255,.35)}
-.paper.torn{background-image:radial-gradient(circle at 10px 10px,#fff 10px,transparent 11px),radial-gradient(circle at 10px 10px,#fff 10px,transparent 11px);background-size:22px 22px;background-repeat:repeat-x;background-position:top left,bottom left}
-.tape{position:absolute;width:90px;height:28px;background:linear-gradient(180deg,#EAF5FF 0%,#CFF5D2 100%);box-shadow:0 6px 18px rgba(120,170,240,.25);transform:rotate(-6deg);left:16px;top:-12px;border-radius:6px;opacity:.9}
-.tape.right{left:auto;right:16px;transform:rotate(7deg)}
-.sticker{display:inline-block;background:#EAF5FF;border:2px solid #b7dcff;border-radius:999px;padding:.45rem .9rem;box-shadow:2px 4px 0 #93c2f5}
+/* Cards / scrapbook paper */
+.paper {
+  background: var(--card-bg);
+  border: 1px dashed var(--card-border);
+  border-radius: 18px;
+  padding: 1.2rem;
+  box-shadow: 0 10px 26px rgba(140,190,255,.25);
+  backdrop-filter: saturate(1.1) blur(2px);
+}
+.paper.torn {
+  background-image:
+    radial-gradient(circle at 10px 10px, var(--card-bg) 10px, transparent 11px),
+    radial-gradient(circle at 10px 10px, var(--card-bg) 10px, transparent 11px);
+  background-size: 22px 22px;
+  background-repeat: repeat-x;
+  background-position: top left, bottom left;
+}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:.65rem 1.1rem;border-radius:14px;font-weight:700;
-  background:#BEE3FF;color:#40384A;box-shadow:2px 4px 0 #93c2f5,inset 0 0 0 2px #7fb7ff;text-shadow:0 1px 0 #fff;transition:transform .1s ease-in-out}
-.btn:hover{transform:scale(1.02);box-shadow:2px 6px 0 #93c2f5,inset 0 0 0 2px #7fb7ff}
-.btn.ghost{background:transparent;border:2px solid #7fb7ff}
+/* Polaroid */
+.polaroid {
+  background: var(--card-bg); /* <- make it dynamic */
+  padding: .6rem .6rem 2rem;
+  border-radius: 12px;
+  box-shadow: var(--polaroid-shadow);
+}
 
-.nav-pill{background:#eaf5ffb3;border:1px solid #bfe3ff;backdrop-filter: blur(6px)}
-h1,h2,h3{font-family:'Poppins',system-ui;letter-spacing:-.01em}
-.highlight{background:linear-gradient(180deg, rgba(255,255,255,0) 60%, #daf0ff 60%)}
-.polaroid{background:#fff;padding:.6rem .6rem 2rem;border-radius:12px;box-shadow:0 18px 40px rgba(30,60,120,.2)}
-.rotate-2{transform:rotate(2deg)}.rotate--2{transform:rotate(-2deg)}
-footer{color:#5b4e61}
+/* Waschi tape + strips pick up theme */
+.washi-strip,
+.washi-corner {
+  background: linear-gradient(135deg, var(--tape-from), var(--tape-to));
+}
+
+/* Buttons */
+.btn {
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:.65rem 1.1rem;border-radius:14px;font-weight:700;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  box-shadow: var(--btn-shadow), inset 0 0 0 2px var(--btn-border);
+  text-shadow: 0 1px 0 rgba(255,255,255,.6);
+  transition: transform .1s ease-in-out, box-shadow .15s ease-in-out, background .2s ease;
+}
+.btn:hover {
+  transform: scale(1.02);
+  box-shadow: 2px 6px 0 var(--btn-border), inset 0 0 0 2px var(--btn-border);
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border-radius:14px;
+  box-shadow: inset 0 0 0 2px var(--ghost-border);
+}
+
+/* Sticker pills (nav tags) */
+.sticker {
+  display:inline-block;
+  background: var(--sticker-bg);
+  border: 2px solid var(--sticker-border);
+  border-radius: 999px;
+  padding: .45rem .9rem;
+  box-shadow: 2px 4px 0 var(--btn-shadow, rgba(0,0,0,.08));
+}
+
+/* IG manual card (uses theme tokens) */
+.ig-card {
+  background: var(--polaroid-bg);
+  color: var(--on-card);
+  border: 2px solid var(--card-border);
+  box-shadow: 3px 5px 0 var(--btn-border), inset 0 0 0 1px var(--card-inner);
+  border-radius: 14px;
+}
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  backdrop-filter: blur(8px) saturate(1.05);
+  box-shadow: var(--header-shadow);
+}
+/* photo styling */
+.ig-photo {
+  border-radius: 12px;
+  display: block;
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/* captions + notes */
+.ig-title {
+  font-weight: 600;
+  text-align: center;
+  margin-top: .75rem;
+}
+
+.note { color: var(--muted); }
+
+.ig-note {
+  color: var(--muted);     /* <-- off‑white in Nightdream */
+  text-align: center;
+  font-size: .875rem;
+  margin-top: .25rem;
+}
+
+/* washi always uses theme */
+.washi-strip, .washi-corner {
+  background: linear-gradient(135deg, var(--tape-from), var(--tape-to)) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+}
+
+/* Frame around gallery embeds/polaroids */
+.scrapbook-frame {
+  background: var(--card-bg);                     /* <-- important */
+  border: 2px solid var(--card-border);
+  box-shadow: 3px 5px 0 var(--btn-border), inset 0 0 0 1px var(--card-inner);
+  border-radius: 14px;
+}
+
+/* Nav capsule */
+.nav-pill {
+  background: color-mix(in oklab, var(--sticker-bg) 80%, #fff 20%);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(6px);
+}
+
+/* Text colors */
+body { color: var(--ink); }
+p, .text-ink\/80 { color: color-mix(in oklab, var(--ink) 80%, #fff 20%) }
+
 
 /* sparkle cursor */
 .sparkle{position:fixed;width:9px;height:9px;border-radius:50%;pointer-events:none;mix-blend-mode:screen;filter:blur(.2px);transform:translate(-50%,-50%);animation:sparkle-pop 650ms ease-out forwards;box-shadow:0 0 8px rgba(255,255,255,.8),0 0 16px rgba(255,255,255,.5)}
@@ -763,19 +1035,12 @@ transform:scale(0);transition:transform .35s ease;border-radius:50%;z-index:-1}
   min-height: 400px;
 }
 
-/* Nightdream palette (soft lavender, midnight ink) */
-:root[data-theme="night"] {
-  --ink: #2b2333;
-  --bg1: #EDE7FF;  /* lavender */
-  --bg2: #E7D6FF;  /* lilac pink */
-  --bg3: #EADDFB;  /* soft mauve */
-  --accent: #CFF5D2; /* keep mint highlight */
+.hover\:scale-\[1\.01\]:hover{
+  --tw-scale-x: 1.01;
+  --tw-scale-y: 1.01;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-/* Optional: dim cards slightly at night */
-:root[data-theme="night"] .paper {
-  background: #ffffffcc;
-}
 @media (min-width: 640px){
   .sm\:h-\[420px\]{
     height: 420px;
@@ -802,6 +1067,7 @@ transform:scale(0);transition:transform .35s ease;border-radius:50%;z-index:-1}
     line-height: 1.75rem;
   }
 }
+
 @media (min-width: 768px){
   .md\:flex{
     display: flex;
@@ -813,14 +1079,13 @@ transform:scale(0);transition:transform .35s ease;border-radius:50%;z-index:-1}
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
 @media (min-width: 1024px){
   .lg\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .lg\:grid-cols-3{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
+
 
 
 

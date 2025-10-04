@@ -5,6 +5,7 @@ import Image from 'next/image'
 import ScrapCard from '@/components/ScrapCard'
 import ScrapbookGallery from '@/components/ScrapbookGallery'
 import SpotifyCard from '@/components/SpotifyCard'
+import { section } from 'framer-motion/client'
 
 
 export default function HomePage() {
@@ -45,7 +46,7 @@ export default function HomePage() {
       <section className="space-y-6 mt-10">
       <ScrapCard>
         <h2 className="text-2xl font-extrabold mb-2">Follow along</h2>
-        <p className="text-ink/80 mb-4">Daily snippets of life in Uruguay:</p>
+        <p className="note text-sm">Daily snippets of life in Uruguay:</p>
         <div className="flex flex-wrap gap-3">
           <a href="https://www.instagram.com/maddieinmvd" target="_blank" className="btn">Instagram</a>
           <a href="https://www.tiktok.com/@maddieinmvd" target="_blank" className="btn">TikTok</a>

@@ -20,15 +20,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen font-display">
         <header className="sticky top-4 z-50">
           <nav className="mx-auto max-w-6xl px-4">
-            <div className="nav-pill rounded-full px-4 py-3 flex items-center justify-between">
+            <div className="flex items-center justify-between p-4 rounded-full" style={{ background: "var(--header-inner)" }}>
               <Link href="/" className="text-lg sm:text-xl font-extrabold tracking-tight">
-                <span className="text-sky-700">maddieinmvd</span>
-                <span className="ml-2 text-ink/80">/ Maddie in Montevideo</span>
+                <span className="brand">maddieinmvd</span>
+                <span className="brand">/ Maddie in Montevideo</span>
               </Link>
               <div className="hidden md:flex items-center gap-2">
-                <Link className="sticker" href="/about">About</Link>
-                <Link className="sticker" href="/services">Services</Link>
-                <Link className="sticker" href="/contact">Contact</Link>
+                <Link className="nav-pill" href="/about">About</Link>
+                <Link className="nav-pill" href="/services">Services</Link>
+                <Link className="nav-pill" href="/contact">Contact</Link>
                 <ThemeToggle />
               </div>
             </div>
